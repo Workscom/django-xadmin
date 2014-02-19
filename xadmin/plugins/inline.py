@@ -349,7 +349,7 @@ def replace_inline_objects(layout, fs):
         return
     for i, layout_object in enumerate(layout.fields):
         if isinstance(layout_object, Inline) and layout_object.model in fs:
-            layout.fields[i] = fs.pop(layout_object.model)
+            layout.fields[i] = fs.pop(layout_object)
         elif hasattr(layout_object, 'get_field_names'):
             replace_inline_objects(layout_object, fs)
 
@@ -407,7 +407,7 @@ class InlineFormsetPlugin(BaseAdminPlugin):
     def get_form_layout(self, layout):
         allow_blank = isinstance(self.admin_view, DetailAdminView)
         fs = dict(
-            [(f.model, InlineFormset(f, allow_blank)) for f in self.formsets])
+            [(f, InlineFormset(f, allow_blank)) for f in self.formsets])
         replace_inline_objects(layout, fs)
 
         if fs:

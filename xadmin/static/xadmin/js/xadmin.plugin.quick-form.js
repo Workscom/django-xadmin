@@ -90,7 +90,7 @@
         }, this))
         .fail($.proxy(function(xhr) {
           this.$mask.hide();
-          alert(typeof xhr === 'string' ? xhr : xhr.responseText || xhr.statusText || 'Unknown error!'); 
+          alert(typeof xhr === 'string' ? xhr : xhr.responseText || xhr.statusText || 'Unknown error!');
         }, this));
     }
     , save: function(newValue) {
@@ -101,23 +101,18 @@
       this.$mask.show();
       this.$form.find('submit, button[type=submit], input[type=submit]').addClass('disabled');
 
-      var off_check_box = Object();
-      // this.$form.find('input[type=checkbox]').each(function(){
-      //   if(!$(this).attr('checked')){
-      //     off_check_box[$(this).attr('name')] = '';
-      //   }
-      // })
-
+      var formData = new FormData(this.$form[0]);
       return $.ajax({
-        data: [this.$form.serialize(), $.param(off_check_box)].join('&'),
+        data: formData,
         url: this.$form.attr('action'),
         type: "POST",
-        dataType: 'json',
+        contentType: false,
+        processData: false,
         beforeSend: function(xhr, settings) {
             xhr.setRequestHeader("X-CSRFToken", $.getCookie('csrftoken'));
         }
       })
-    }, 
+    },
   }
 
   $.fn.ajaxform = function ( option ) {
@@ -167,7 +162,7 @@
 
       if(!this.modal){
         var modal = $('<div class="modal fade quick-form" role="dialog"><div class="modal-dialog"><div class="modal-content">'+
-          '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3>'+ 
+          '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3>'+
           this.$btn.attr('title') +'</h3></div><div class="modal-body"></div>'+
           '<div class="modal-footer" style="display: none;"><button class="btn btn-default" data-dismiss="modal" aria-hidden="true">'+gettext('Close')+'</button>'+
           '<a class="btn btn-primary btn-submit">'+gettext('Add')+'</a></div></div></div></div>')
@@ -180,7 +175,7 @@
           form.addClass('quick-form')
           form.on('post-success', $.proxy(self.post, self))
           form.exform()
-          
+
           modal.find('.modal-footer').show()
           modal.find('.btn-submit').click(function(){form.submit()})
 

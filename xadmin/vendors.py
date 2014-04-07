@@ -101,4 +101,13 @@ vendors = {
             'dev': 'xadmin/vendor/snapjs/snap.js',
         }
     },
+    "fancytree": {
+        "css": {
+            'dev': 'xadmin/vendor/fancytree/dist/skin-lion/ui.fancytree.css'
+        },
+        "js": {
+            'dev': 'xadmin/vendor/fancytree/dist/jquery.fancytree-all.js',
+	    'production': 'xadmin/vendor/fancytree/dist/jquery.fancytree-all.min.js'
+        }
+    },
 }

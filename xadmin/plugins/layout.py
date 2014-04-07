@@ -15,6 +15,12 @@ DEFAULT_LAYOUTS = {
         'name': _(u'Table'),
         'template': 'views/model_list.html',
     },
+    'mptttable': {
+        'key': 'table',
+        'icon': 'table',
+        'name': _(u'Table'),
+        'template': 'views/model_list_mptt.html',
+    },
     'thumbnails': {
         'key': 'thumbnails',
         'icon': 'th-large',

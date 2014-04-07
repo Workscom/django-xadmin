@@ -103,11 +103,11 @@ vendors = {
     },
     "fancytree": {
         "css": {
-            'dev': 'xadmin/vendor/fancytree/dist/skin-lion/ui.fancytree.css'
+            'dev': 'xadmin/vendor/fancytree/prod/skin-lion/ui.fancytree.css'
         },
         "js": {
-            'dev': 'xadmin/vendor/fancytree/dist/jquery.fancytree-all.js',
-	    'production': 'xadmin/vendor/fancytree/dist/jquery.fancytree-all.min.js'
+            'dev': 'xadmin/vendor/fancytree/prod/jquery.fancytree-all.js',
+	    'production': 'xadmin/vendor/fancytree/prod/jquery.fancytree-all.min.js'
         }
     },
 }

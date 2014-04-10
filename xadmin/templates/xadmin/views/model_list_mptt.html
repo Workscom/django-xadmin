@@ -150,7 +150,7 @@
           {% endfor %}
           </tr>
           </table>
-          <ul class="children">
+          <ul class="children" id="parent_el_{{ row.object.id }}_childrens">
           </ul>
         {% view_block 'result_row' row %}
       {% endfor %}
@@ -173,7 +173,7 @@
       var childrens = $("li[parent-id]");
       $.each(childrens, function(i){
          var parent_id = $(childrens[i]).attr('parent-id');
-	 var parent_ul = $('#parent_el_'+parent_id).find('ul.children');
+         var parent_ul = $('#parent_el_'+parent_id+'_childrens');
          $(childrens[i]).appendTo(parent_ul);
       });
       $('#tree').fancytree({

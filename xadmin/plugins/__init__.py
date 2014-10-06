@@ -10,5 +10,7 @@ def register_builtin_plugins(site):
     from django.conf import settings
 
     exclude_plugins = getattr(settings, 'XADMIN_EXCLUDE_PLUGINS', [])
+    extra_plugins = getattr(settings, 'XADMIN_EXTRA_PLUGINS', [])
 
     [import_module('xadmin.plugins.%s' % plugin) for plugin in PLUGINS if plugin not in exclude_plugins]
+    [import_module('xadmin.plugins.%s' % plugin) for plugin in extra_plugins]
